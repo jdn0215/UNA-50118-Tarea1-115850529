@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 )
 
 func handler(writer http.ResponseWriter, request *http.Request) {
@@ -32,5 +33,6 @@ func handler(writer http.ResponseWriter, request *http.Request) {
 func main() {
 	fmt.Println("Servidor iniciado....")
 	http.HandleFunc("/book/", handler)
-	http.ListenAndServe(":8080", nil)
+	//---http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 }
