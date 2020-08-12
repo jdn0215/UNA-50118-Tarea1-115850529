@@ -66,8 +66,35 @@ func handlePost(w http.ResponseWriter, r *http.Request) (err error) {
 	r.Body.Read(body)
 	book := Book{}
 	json.Unmarshal(body, &book)
+	fmt.Println(book)
+	//revisando posiciones
+	book2 := books[i]
+	if book.Id != "" {
+		book2.Id = book.Id
+	}
+	if book.Title != "" {
+		book2.Title = book.Title
+	}
+	if book.Edition != "" {
+		book2.Edition = book.Edition
+	}
+	if book.Copyright != "" {
+		book2.Copyright = book.Copyright
+	}
+	if book.Language != "" {
+		book2.Language = book.Language
+	}
+	if book.Pages != "" {
+		book2.Pages = book.Pages
+	}
+	if book.Author != "" {
+		book2.Author = book.Author
+	}
+	if book.Publisher != "" {
+		book2.Publisher = book.Publisher
+	}
 	//actualizando libro
-	books[i] = book
+	books[i] = book2
 	w.WriteHeader(200)
 	return
 }
